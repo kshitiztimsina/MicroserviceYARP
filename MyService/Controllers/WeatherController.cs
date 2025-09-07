@@ -25,7 +25,11 @@ namespace MyService.Controllers
             var result = Enumerable.Range(1, 3).Select(_ =>
                 Summaries[rng.Next(Summaries.Length)]
             );
-          
+            //if (rng.Next(0, 100) < 30) // 30% chance to fail
+            //{
+            //    return StatusCode(500);
+            //}
+
             // Include container name
             var instanceName = Environment.GetEnvironmentVariable("InstanceName") ?? Environment.MachineName;
 

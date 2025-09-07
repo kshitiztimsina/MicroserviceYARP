@@ -50,7 +50,5 @@ services:
     depends_on:
       - myservice1
       - myservice2
-      - myservice3
-      - myservice4
 
   
