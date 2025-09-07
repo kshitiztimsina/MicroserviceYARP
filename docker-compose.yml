@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+  myservice1:
+    build: ./MyService
+    container_name: myservice1
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - SERVICE_ID=1
+      - InstanceName=MyService1
+    ports:
+      - "5001:80"
+
+  myservice2:
+    build: ./MyService
+    container_name: myservice2
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - SERVICE_ID=2
+      - InstanceName=MyService2
+
+    ports:
+      - "5002:80"
+
+  myservice3:
+    build: ./MyService
+    container_name: myservice3
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - SERVICE_ID=3
+      - InstanceName=MyService3
+    ports:
+      - "5003:80"
+
+  myservice4:
+    build: ./MyService
+    container_name: myservice4
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - SERVICE_ID=4
+      - InstanceName=MyService4
+    ports:
+      - "5004:80"
+
+  apigateway:
+    build: ./ApiGateway
+    container_name: apigateway
+    ports:
+      - "5000:80"
+    depends_on:
+      - myservice1
+      - myservice2
+      - myservice3
+      - myservice4
+
+  
